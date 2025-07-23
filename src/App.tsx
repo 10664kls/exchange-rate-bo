@@ -32,7 +32,6 @@ import SaveIcon from "@mui/icons-material/Save";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import { Controller, useForm } from "react-hook-form";
 import FormattedNumberInput from "./components/FormattedNumberInput";
 import { cleanNumberForAPI, formatNumber } from "./utils/number";
@@ -555,23 +554,19 @@ export default function App() {
                                   }
                                   size="small"
                                 />
-                                <IconButton
-                                  size="small"
-                                  onClick={() => handleToggleStatus(rate.id)}
-                                  disabled={isAnyLoading} // Disable during any loading
-                                  color={
-                                    rate.status === "ACTIVE"
-                                      ? "default"
-                                      : "primary"
-                                  }>
-                                  {rate.status === "ACTIVE" ? (
-                                    <RadioButtonUncheckedIcon />
-                                  ) : (
+                                {rate.status === "ACTIVE" ? (
+                                  <></>
+                                ) : (
+                                  <IconButton
+                                    size="small"
+                                    onClick={() => handleToggleStatus(rate.id)}
+                                    disabled={isAnyLoading} // Disable during any loading
+                                    color="primary">
                                     <Tooltip title="Upload to Avaya">
                                       <CheckCircleIcon />
                                     </Tooltip>
-                                  )}
-                                </IconButton>
+                                  </IconButton>
+                                )}
                               </Box>
                             </TableCell>
                           </TableRow>
